@@ -439,5 +439,3 @@ elif dir == 'vtb':
 
 else:
   print('error: no such option')
-
-# this is a test
