@@ -62,7 +62,7 @@ def triggerFunc(trace_array, charFunc, thres, method, saveFilePath):
     ax2.set_title(method + ' applied to seismogram of ' + station + '.' + loc + '.' + chn)
 
     fig.tight_layout()
-    fig.savefig('./results/' + saveFilePath + '.png', dpi=300)
+    fig.savefig('../results/' + saveFilePath + '.png', dpi=300)
 
     utc = datetime.utcfromtimestamp(trace_array.times('timestamp')[event_indice]).strftime('%Y-%m-%dT%H:%M:%S')
 
@@ -353,35 +353,35 @@ if dir == 'mp':
   # STA/LTA
   if method == 'sta-lta':
     for i in range(len(MPlist)):
-      a = read('./mseed/mp/' + MPlist[i])[0]
+      a = read('../mseed/mp/' + MPlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a, sta_lta(a, 0.009, 4.5)[0], 115.0, str(i+1) + '-STA/LTA', 'mp/sta-lta/MP-STA-LTA-' + str(i+1))
 
   # STA/LTA ABS
   elif method == 'sta-lta-abs':
     for i in range(len(MPlist)):
-      a = read('./mseed/mp/' + MPlist[i])[0]
+      a = read('../mseed/mp/' + MPlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a, sta_lta_abs(a, 0.01, 3.0)[0], 0.2, str(i+1) + '-STA/LTA-ABS', 'mp/sta-lta-abs/MP-STA-LTA-ABS-' + str(i+1))
 
   # LTE/STE
   elif method == 'lte-ste':
     for i in range(len(MPlist)):
-      a = read('./mseed/mp/' + MPlist[i])[0]
+      a = read('../mseed/mp/' + MPlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a, lte_ste(a, int(9.0*sRate), int(2.5*sRate))[0], np.max(lte_ste(a, int(9.0*sRate), int(2.5*sRate))), str(i+1) + '-LTE/STE', 'mp/lte-ste/MP-LTE-STE-' + str(i+1))
   
   # MER
   elif method == 'mer':
     for i in range(len(MPlist)):
-      a = read('./mseed/mp/' + MPlist[i])[0]
+      a = read('../mseed/mp/' + MPlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a.taper(0.5, side='left'), mer(a, 3.05)[0], 1.0, str(i+1) + '-MER', 'mp/mer/MP-MER-' + str(i+1))
   
   # Kurtosis
   elif method == 'kurtosis':
     for i in range(len(MPlist)):
-      a = read('./mseed/mp/' + MPlist[i])[0]
+      a = read('../mseed/mp/' + MPlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a, kurtosis(a, 1.75)[0], -2.9, str(i+1) + '-Kurtosis', 'mp/kurtosis/MP-KURTOSIS-' + str(i+1))
   
@@ -402,35 +402,35 @@ elif dir == 'vtb':
   # STA/LTA
   if method == 'sta-lta':
     for i in range(len(VTBlist)):
-      a = read('./mseed/vtb/' + VTBlist[i])[0]
+      a = read('../mseed/vtb/' + VTBlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a, sta_lta(a, 0.009, 4.5)[0], 115.0, str(i+1) + '-STA/LTA', 'vtb/sta-lta/VTB-STA-LTA-' + str(i+1))
 
   # STA/LTA ABS
   elif method == 'sta-lta-abs':
     for i in range(len(VTBlist)):
-      a = read('./mseed/vtb/' + VTBlist[i])[0]
+      a = read('../mseed/vtb/' + VTBlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a, sta_lta_abs(a, 0.01, 3.0)[0], 0.2, str(i+1) + '-STA/LTA-ABS', 'vtb/sta-lta-abs/VTB-STA-LTA-ABS-' + str(i+1))
 
   # LTE/STE
   elif method == 'lte-ste':
     for i in range(len(VTBlist)):
-      a = read('./mseed/vtb/' + VTBlist[i])[0]
+      a = read('../mseed/vtb/' + VTBlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a, lte_ste(a, int(9.0*sRate), int(2.5*sRate))[0], np.max(lte_ste(a, int(9.0*sRate), int(2.5*sRate))), str(i+1) + '-LTE/STE', 'vtb/lte-ste/VTB-LTE-STE-' + str(i+1))
   
   # MER
   elif method == 'mer':
     for i in range(len(VTBlist)):
-      a = read('./mseed/vtb/' + VTBlist[i])[0]
+      a = read('../mseed/vtb/' + VTBlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a.taper(0.5, side='left'), mer(a, 3.05)[0], 1.0, str(i+1) + '-MER', 'vtb/mer/VTB-MER-' + str(i+1))
   
   # Kurtosis
   elif method == 'kurtosis':
     for i in range(len(VTBlist)):
-      a = read('./mseed/vtb/' + VTBlist[i])[0]
+      a = read('../mseed/vtb/' + VTBlist[i])[0]
       sRate = a.stats.sampling_rate
       triggerFunc(a, kurtosis(a, 1.75)[0], -2.9, str(i+1) + '-Kurtosis', 'vtb/kurtosis/VTB-KURTOSIS-' + str(i+1))
   
