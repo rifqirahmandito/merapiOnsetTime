@@ -8,8 +8,8 @@ from datetime import datetime
 from statistics import mean, stdev
 
 # paths
-MPpath = './mseed/mp'
-VTBpath = './mseed/vtb'
+MPpath = '../mseed/mp'
+VTBpath = '../mseed/vtb'
 
 # defining a function for listing available files in a path/folder
 def openFolder(path):
