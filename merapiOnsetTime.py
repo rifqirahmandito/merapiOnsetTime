@@ -418,7 +418,7 @@ elif dir == 'vtb':
     for i in range(len(VTBlist)):
       a = read('../mseed/vtb/' + VTBlist[i])[0]
       sRate = a.stats.sampling_rate
-      triggerFunc(a, lte_ste(a, int(9.0*sRate), int(2.5*sRate))[0], np.max(lte_ste(a, int(9.0*sRate), int(2.5*sRate))), str(i+1) + '-LTE/STE', 'vtb/lte-ste/VTB-LTE-STE-' + str(i+1))
+      triggerFunc(a.taper(0.5, type='flattop', side='left'), lte_ste(a, int(9.0*sRate), int(2.5*sRate))[0], np.max(lte_ste(a, int(9.0*sRate), int(2.5*sRate))), str(i+1) + '-LTE/STE', 'vtb/lte-ste/VTB-LTE-STE-' + str(i+1))
   
   # MER
   elif method == 'mer':
