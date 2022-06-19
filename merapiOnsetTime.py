@@ -376,7 +376,7 @@ if dir == 'mp':
     for i in range(len(MPlist)):
       a = read('../mseed/mp/' + MPlist[i])[0]
       sRate = a.stats.sampling_rate
-      triggerFunc(a.taper(0.5, side='left'), mer(a, 3.05)[0], 1.0, str(i+1) + '-MER', 'mp/mer/MP-MER-' + str(i+1))
+      triggerFunc(a.taper(0.15, type='flattop',side='left'), mer(a, 3.05)[0], 1.0, str(i+1) + '-MER', 'mp/mer/MP-MER-' + str(i+1))
   
   # Kurtosis
   elif method == 'kurtosis':
