@@ -369,7 +369,7 @@ if dir == 'mp':
     for i in range(len(MPlist)):
       a = read('../mseed/mp/' + MPlist[i])[0]
       sRate = a.stats.sampling_rate
-      triggerFunc(a, lte_ste(a, int(9.0*sRate), int(2.5*sRate))[0], np.max(lte_ste(a, int(9.0*sRate), int(2.5*sRate))), str(i+1) + '-LTE/STE', 'mp/lte-ste/MP-LTE-STE-' + str(i+1))
+      triggerFunc(a.taper(0.5, type='cosine', side='left'), lte_ste(a, int(9.0*sRate), int(2.5*sRate))[0], np.max(lte_ste(a, int(9.0*sRate), int(2.5*sRate))), str(i+1) + '-LTE/STE', 'mp/lte-ste/MP-LTE-STE-' + str(i+1))
   
   # MER
   elif method == 'mer':
